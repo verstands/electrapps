@@ -13,8 +13,8 @@
                 <input type="number" name="titre" class="form-control" placeholder="Pourcentage"><br>
                 <label for="">Devise : </label><br>
                 <select name="devise" class="form-control">
-                    @foreach($devise as $devises)
-                    <option value="{{$devises->id_devise}}">{{$devises->type_d}}</option>
+                    @foreach($eglise as $devises)
+                    <option value="{{$devises->id_eg}}">{{$devises->nom}}</option>
                     @endforeach
                 </select><br>
 

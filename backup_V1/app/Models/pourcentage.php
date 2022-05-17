@@ -9,5 +9,5 @@ class pourcentage extends Model
 {
     use HasFactory;
     public $timestamps=false;
-	public $fillable=['id_pou ','titre', 'id_devise'];
+	public $fillable=['id_pou ','titre', 'id_devise', 'usd', 'cdf'];
 }

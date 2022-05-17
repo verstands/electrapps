@@ -37,7 +37,9 @@
               <p></p>
               <form action="{{route('user4_action')}}" method="GET">
                  
-                <input type="number" class="form-control" name="phone" placeholder="Téléphone Ex: 243xxxxxxxxx"><br>
+                <input type="number" class="form-control" name="Nom"  placeholder="Nom Ex: KoKI"><br>
+                <input type="number" class="form-control" name="Nom"  placeholder="Prenom Ex: Rabby"><br>
+                <input type="number" class="form-control" name="phone"  placeholder="Téléphone Ex: 243xxxxxxxxx"><br>
                 <h5><center>Selectionnez ou inserez le montant que vous aimeriez offrir</center></h5>         
                     <a href="#" onclick="cinq();" id="quinze">15</a>
                     <a href="#" onclick="vingtsinque();" id="vingtsinque">25</a>
@@ -49,7 +51,7 @@
                     <div></div>
                     <br>
                     <div></div>
-                <input type="number" class="form-control" id="inputs" name="amount" placeholder="Montant"><br>
+                <input type="number" class="form-control" id="inputs" disabled value="{{ session('montant_don') }}" name="amount" placeholder="Montant"><br>
                 <input type="hidden" class="form-control" value="{{$affichages->id_comp}}-MOB-{{$ref}}" name="reference" placeholder="Montant">
                 <select name="devise" id="" class="form-control">
                     @foreach($devise as $devises)

@@ -11,6 +11,7 @@
             <form action="" method="POST">
             @csrf
                 <input type="text" class="form-control" name="nom" placeholder="Nom"><br>
+                <input type="number" class="form-control" name="montant" placeholder="Montant"><br>
                 <label >Company</label>
                 <select name="company" id="" class="form-control">
                     @foreach($company as $companys):

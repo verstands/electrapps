@@ -229,6 +229,11 @@ class Ctradmin extends Controller
         $eglise = session('eglise');
         if(isset($id)){
             $affichage = DB::select("SELECT * FROM eglises WHERE id_eg = '$eglise' ");
+            $montant = DB::select("SELECT montant FROM dons WHERE id_off = '$decrypt' ");
+            foreach($montant as $montants):
+                Session::put('montant_don', $montants->montant);
+            endforeach;
+           
             $paiement = DB::select("SELECT * FROM paiements, eglises WHERE paiements.id_eg = eglises.id_eg AND paiements.id_eg = '$eglise' ");
             Session::put('don', $decrypt);
             return view("user.user2", compact('affichage', 'paiement'));
@@ -567,7 +572,7 @@ class Ctradmin extends Controller
 		$pourCDF = $pourcentageCDFs->titre;
 	 }
         foreach( $somme as $sommes):
-	function str_rount($leng){
+	function str_rounts($leng){
             $string = 'azertyuioplkhfdsqwxcvbnAZERTYUIOPLKQSHDGFVBNCVCB123456789';
             return 'PAY'.substr(str_shuffle(str_repeat($string, $leng)), 0,$leng);
         }
@@ -585,7 +590,7 @@ class Ctradmin extends Controller
                     'id_paiement' => session('paiement'),
                     'date_t' => $date,
                     'date_ts' => $date1,
-		    'reference' => str_rount(10)
+		    'reference' => str_rounts(10)
                 ]);
                 eglise::whereId_eg($sommes->id_eg)->update(['sommeusd' => $add]);
                  return redirect()->route("chargement");
@@ -604,7 +609,7 @@ class Ctradmin extends Controller
                     'id_paiement' => session('paiement'),
                     'date_t' => $date,
                     'date_ts' => $date1,
-		    'reference' => str_rount(10)
+		    'reference' => str_rounts(10)
                 ]);
                 eglise::whereId_eg($sommes->id_eg)->update(['sommecdf' => $add]);
                 return redirect('chargement');

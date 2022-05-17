@@ -14,6 +14,7 @@
             <th>Date</th>
             <th>Nom</th>
             <th>Company</th>
+            <th>Montant</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -23,6 +24,7 @@
             <th>Date</th>
             <th>Nom</th>
             <th>Company</th>
+            <th>Montant</th>
             <th>Action</th>
           </tr>
         </tfoot>
@@ -36,6 +38,7 @@
             <td>{{$dons->id_off}}</td>
             <td>{{$dons->type_off}}</td>
             <td>{{$dons->nom}}</td>
+            <td>{{$dons->montant}}</td>
             <td>
                 <a href="{{route('delete_don',$dons->id_off)}}" title="supprimer" class="btn btn-danger btn-circle">
                     <i class="fas fa-trash"></i>

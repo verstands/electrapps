@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\devise;
 use App\Models\pourcentage;
 use App\Models\company;
+use App\Models\eglise;
 use App\Models\transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -17,7 +18,8 @@ class Ctrpourcentage extends Controller
     {
         if (session('admins') == true) {
            $devise = devise::all();
-            return view("pages.pourcentage", compact('devise')); 
+           $eglise = eglise::all();
+            return view("pages.pourcentage", compact('devise', 'eglise')); 
         }else{
             return redirect('/');
         }
@@ -77,7 +79,9 @@ class Ctrpourcentage extends Controller
         if (session('admins') == true) {
             $pourcentage = pourcentage::create([
             'titre' => $request->titre,
-            'id_devise' => $request->devise
+            'id_devise' => $request->devise,
+            'usd' => $request->titre,
+            'cdf' => $request->titre
             ]);
             return redirect()->route('affiche_pourcentage');
         }else{

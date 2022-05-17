@@ -23,7 +23,7 @@ class Ctrdon extends Controller
     public function affiche(){
         if (session('admins') == true) {
              $don = DB::table('dons')->join('eglises',  'eglises.id_eg','=', 'dons.id_eg')->
-            select('id_off', 'type_off', 'eglises.nom')->get();
+            select('id_off', 'type_off', 'eglises.nom', 'montant')->get();
             return view("pages.affiche_don", compact('don'));
         }else{
             return redirect('/');
@@ -34,7 +34,8 @@ class Ctrdon extends Controller
         if (session('admins') == true) {
             $devise = don::create([
             'type_off' => $request->nom,
-            'id_eg' => $request->company
+            'id_eg' => $request->company,
+            'montant' => $request->montant
             ]);
             return redirect()->route('affiche_don');
         }else{
@@ -59,7 +60,7 @@ class Ctrdon extends Controller
             $resu = DB::table('dons')->
             join('eglises', 'dons.id_eg', '=', 'eglises.id_eg')->
             where('id_off', '=',$id_pou)->
-            select('id_off', 'type_off', 'eglises.nom')->get();
+            select('id_off', 'type_off', 'eglises.nom', 'montant')->get();
             return view('pages.updon', compact('resu', 'company'));
         }else{
             return redirect('/');
@@ -68,7 +69,7 @@ class Ctrdon extends Controller
     }
     public function update_don_active(Request $req){
         if (session('admins') == true) {
-            $mod = don::whereId_off($req->id_off)->update(['type_off' => $req->nom, 'id_eg' => $req->company]);
+            $mod = don::whereId_off($req->id_off)->update(['type_off' => $req->nom, 'id_eg' => $req->company, 'montant' => $req->montant]);
             return redirect()->route('affiche_don');
         }else{
             return redirect('/');

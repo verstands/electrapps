@@ -9,5 +9,5 @@ class companie extends Model
 {
     use HasFactory;
     public $timestamps=false;
-	public $fillable=['id_eg ','nom', 'logo', 'active', 'lien', 'des', 'tel'];
+	public $fillable=['id_eg ','nom', 'logo', 'active', 'lien', 'des', 'tel', 'id_comp', 'sommeusd', 'sommecdf'];
 }

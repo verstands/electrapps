@@ -9,5 +9,5 @@ class don extends Model
 {
     use HasFactory;
     public $timestamps=false;
-	public $fillable=['id_off ','type_off', 'id_eg'];
+	public $fillable=['id_off ','type_off', 'id_eg', 'montant'];
 }
